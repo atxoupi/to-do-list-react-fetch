@@ -17,7 +17,7 @@ const Card = () => {
 		<>
 			<form onSubmit={listAdd}>
 				<input
-					className="form-control"
+					className="form-control m-auto p-3 w-50"
 					onChange={(e) => setTarea(e.target.value)}
 					type="text"
 					value={tarea}

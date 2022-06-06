@@ -6,7 +6,7 @@ import Card from "./Card.jsx";
 //create your first component
 const Home = () => {
 	return (
-		<div>
+		<div className="container" id="pizarra">
 			<Card />
 		</div>
 	);

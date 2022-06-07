@@ -7,13 +7,12 @@ const List = ({ lista, setLista }) => {
 
 	const listItems = lista.map((tarea, i) => (
 		<li key={i} className="list-group-item m-auto w-50 d-flex">
-			<div className="w-100">{tarea}</div>
+			<div className="w-100">{tarea.label}</div>
 			<div className="d-flex justify-content-end">
 				<button
-					className="button"
+					className="btn btn-outline-danger"
 					type="button"
-					onClick={() => borrar(tarea)}
-					className="btn btn-outline-danger">
+					onClick={() => borrar(tarea)}>
 					<i className="fa-solid fa-trash"></i>
 				</button>
 			</div>

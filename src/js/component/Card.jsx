@@ -10,15 +10,14 @@ const Card = () => {
 
 	const [tarea, setTarea] = useState("");
 	const [lista, setLista] = useState([]);
-	function subirApi(tarea) {
+
+	useEffect(() => {
 		fetch(
 			"https://assets.breatheco.de/apis/fake/todos/user/andreshermelo",
 			{
 				method: "PUT",
-				body: [{ label: { tarea }, done: false }],
-				headers: {
-					"Content-Type": "application/json",
-				},
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(lista),
 			}
 		)
 			.then((resp) => {
@@ -35,15 +34,15 @@ const Card = () => {
 				//manejo de errores
 				console.log(error);
 			});
-	}
+	}, [lista]);
+
 	function listAdd(e) {
 		e.preventDefault();
 		if (tarea === "") {
 			alert("El campo no puede estar vacío");
 		} else {
-			subirApi(tarea);
 			setLista(lista.concat(tarea));
-			setTarea("");
+			setTarea({ label: "", done: false });
 		}
 	}
 	return (
@@ -51,9 +50,11 @@ const Card = () => {
 			<form onSubmit={listAdd}>
 				<input
 					className="form-control m-auto p-3 w-50"
-					onChange={(e) => setTarea(e.target.value)}
+					onChange={(e) =>
+						setTarea({ label: e.target.value, done: false })
+					}
 					type="text"
-					value={tarea}
+					value={tarea.label}
 					placeholder="Default input"
 					aria-label="default input example"></input>
 			</form>

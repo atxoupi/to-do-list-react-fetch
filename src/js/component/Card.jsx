@@ -45,6 +45,11 @@ const Card = () => {
 			setTarea({ label: "", done: false });
 		}
 	}
+	//Borramos todo el contenido del array
+	function reset() {
+		setLista(lista.filter((item) => item === ""));
+	}
+
 	return (
 		<>
 			<form onSubmit={listAdd}>
@@ -59,6 +64,14 @@ const Card = () => {
 					aria-label="default input example"></input>
 			</form>
 			<List lista={lista} setLista={setLista} />
+			<div className="d-flex justify-content-center">
+				<button
+					type="button"
+					onClick={reset}
+					className="btn btn-outline-warning m-auto">
+					Reset
+				</button>
+			</div>
 		</>
 	);
 };
